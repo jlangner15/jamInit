@@ -1,2 +1,6 @@
 # jamInit
-Java application to find musicians to play with.
+
+## Goal:
+Develop a Java based application for users to find bandmates based on genres, style and influences.
+
+
