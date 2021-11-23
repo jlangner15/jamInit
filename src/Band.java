@@ -82,14 +82,15 @@ public class Band {
     public void findGuitarist(int exp, Skill skill){
         Guitarist potentialGuitarist = allGuitarists.findGuitarist(commonGenres, exp, skill);
 
+        assert potentialGuitarist != null;
         //Check that guitarist isn't void guitarist
         if (!potentialGuitarist.getGender().equals("N")) addGuitarist(potentialGuitarist);
     }
 
     public void findBassist(int exp, Skill skill){
-
         Bassist potentialbassist = allBassists.findBassist(commonGenres, exp, skill);
 
+        assert potentialbassist != null;
         //Check that guitarist isn't void guitarist
         if (!potentialbassist.getGender().equals("N")) addBassist(potentialbassist);
     }
@@ -97,6 +98,7 @@ public class Band {
     public void findDrummer(int exp, Skill skill){
         Drummer potentialDrummer = allDrummers.findDrummer(commonGenres, exp, skill);
 
+        assert potentialDrummer != null;
         if (!potentialDrummer.getGender().equals("N")) addDrummer(potentialDrummer);
     }
 
