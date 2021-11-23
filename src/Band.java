@@ -79,16 +79,25 @@ public class Band {
     }
 
 
-    public void findGuitarist(){
-        addGuitarist(allGuitarists.findGuitarist(commonGenres));
+    public void findGuitarist(int exp, Skill skill){
+        Guitarist potentialGuitarist = allGuitarists.findGuitarist(commonGenres, exp, skill);
+
+        //Check that guitarist isn't void guitarist
+        if (!potentialGuitarist.getGender().equals("N")) addGuitarist(potentialGuitarist);
     }
 
-    public void findBassist(){
-        addBassist(allBassists.findBassist(commonGenres));
+    public void findBassist(int exp, Skill skill){
+
+        Bassist potentialbassist = allBassists.findBassist(commonGenres, exp, skill);
+
+        //Check that guitarist isn't void guitarist
+        if (!potentialbassist.getGender().equals("N")) addBassist(potentialbassist);
     }
 
-    public void findDrummer(){
-        addDrummer(allDrummers.findDrummer(commonGenres));
+    public void findDrummer(int exp, Skill skill){
+        Drummer potentialDrummer = allDrummers.findDrummer(commonGenres, exp, skill);
+
+        if (!potentialDrummer.getGender().equals("N")) addDrummer(potentialDrummer);
     }
 
 
@@ -100,6 +109,10 @@ public class Band {
         for(Genres genr : commonGenres.keySet()){
             System.out.println("Genre: " + genr.toString() + ", Matches: " + commonGenres.get(genr));
         }
+    }
+
+    public Set<Musician> getBandMembers(){
+        return bandMembers;
     }
 
 

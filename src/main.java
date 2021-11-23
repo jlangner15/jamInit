@@ -2,10 +2,10 @@ public class main {
 
     public static void main(String[] args){
 
-        Guitarist Jimmy = new Guitarist(4,"Professional", "lead", "Jimmy", 27, "M");
+        Guitarist Jimmy = new Guitarist(1,"Professional", "lead", "Jimmy", 27, "M");
         Bassist Jeremy = new Bassist(1,"Intermediate", "bass", "Jeremy", 20, "M");
         Drummer John = new Drummer(15, "Professional", "drummer", "bonzo", 30, "M");
-        Guitarist Tony = new Guitarist(10,"Professional", "lead", "Tony", 20, "M");
+        Guitarist Tony = new Guitarist(10,"Beginner", "lead", "Tony", 20, "M");
 
         Jimmy.addGenre("Rock");
         Jimmy.addGenre("Folk");
@@ -30,9 +30,11 @@ public class main {
 
 
         ZedLeppelin.findDrummer();
-        ZedLeppelin.findGuitarist();
+        ZedLeppelin.findGuitarist(1, Skill.Professional);
 
-        System.out.println(ZedLeppelin.numMembers);
+        for(Musician musician : ZedLeppelin.getBandMembers()) {
+            System.out.println(musician.getName());
+        }
         //System.out.println(ZedLeppelin.getCommonGenres());
         //System.out.println(startBand.findGuitarist(ZedLeppelin.getCommonGenres()).getName());
 

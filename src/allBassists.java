@@ -19,7 +19,7 @@ public class allBassists {
         return bassist;
     }
 
-    public static  Bassist findBassist(HashMap<Genres, Integer> bandGenres) {
+    public static  Bassist findBassist(HashMap<Genres, Integer> bandGenres, int minExp, Skill skill) {
         Set<Bassist> bassists = allBassists.getBassists();
 
         int maxSharedGenres = 0; //integer to count shared genres between each bassist and the band to find optimal candidate
@@ -28,13 +28,15 @@ public class allBassists {
         //For every bassist check each genre for a match in the band's common genres
         for (Bassist bassist : bassists) {
             int matches = 0;
-            for (Genres genre : bassist.getGenres()) {
-                if (bandGenres.containsKey(genre)) matches++;
-            }
-            //If this candidate contains more matches than the most already, update the shared value and ideal bassist
-            if (matches > maxSharedGenres) {
-                maxSharedGenres = matches;
-                idealBassist = bassist;
+            if (bassist.getSkill() == skill && bassist.getExperience() >= minExp){
+                for (Genres genre : bassist.getGenres()) {
+                    if (bandGenres.containsKey(genre)) matches++;
+                }
+                //If this candidate contains more matches than the most already, update the shared value and ideal bassist
+                if (matches > maxSharedGenres) {
+                    maxSharedGenres = matches;
+                    idealBassist = bassist;
+                }
             }
         }
 

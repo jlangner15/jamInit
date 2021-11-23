@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,24 +19,22 @@ public class allGuitarists {
         return guitarists;
     }
 
-    public static  Guitarist findGuitarist(HashMap<Genres, Integer> bandGenres){
+    public static  Guitarist findGuitarist(HashMap<Genres, Integer> bandGenres, int minExp, Skill skill){
         Set<Guitarist> label = allGuitarists.getGuitarists();
         int maxSharedGenres = 0;
         Guitarist idealGuitarist = Guitarist.getVoidGuitarist();
 
         for(Guitarist guitarist : label){
             int matches = 0;
-            for(Genres genre : guitarist.getGenres()){
-                if(bandGenres.containsKey(genre)) matches++;
+            if (guitarist.getSkill() == skill && guitarist.getExperience() >= minExp){
+                for(Genres genre : guitarist.getGenres()){
+                    if(bandGenres.containsKey(genre)) matches++;
+                }
+                if(matches > maxSharedGenres){
+                    maxSharedGenres = matches;
+                    idealGuitarist = guitarist;
+                }
             }
-            if(matches > maxSharedGenres){
-                maxSharedGenres = matches;
-                idealGuitarist = guitarist;
-            }
-        }
-
-        if (idealGuitarist.getGender() == "N"){
-            return null;
         }
         return idealGuitarist;
 
