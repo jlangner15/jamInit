@@ -5,7 +5,7 @@ public class Musician {
     private boolean valid = false;
 
     public Musician(String Name, int Age, String Gender){
-        if (!Name.equals("") && Age > 0 && !Gender.equals("N")) {
+        if (!Name.equals("") && Age > 0) {
             name = Name;
             age = Age;
             gender = Gender;
@@ -29,6 +29,15 @@ public class Musician {
     public int getAge() {return age;}
 
     public String getGender() {return gender;}
+
+    public boolean isValid(){return valid;}
+
+    public void makeInvalid() {
+        valid = false;
+        name = null;
+        age = 0;
+        gender = null;
+    }
 
 
 }

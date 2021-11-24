@@ -28,11 +28,9 @@ public class testingMusician {
     void testAddIllegalMusicians(){
         Musician zak = new Musician("", 1, "M");
         Musician yusif = new Musician("yusif arman", 0, "M");
-        Musician xander = new Musician("xander thistle", 40, "N");
 
         assertNull(zak.getName());
         assertEquals(yusif.getAge(), 0);
-        assertNull(xander.getGender());
 
     }
 
@@ -70,3 +68,4 @@ public class testingMusician {
 
 
 }
+

@@ -14,20 +14,25 @@ class Guitarist extends Musician {
 
     public Guitarist(int exp, String skl, String primaryRole, String name, int age, String gender){
         super(name, age, gender);
-        yearsExperience = exp;
-        roles.add(primaryRole);
+        if (exp >= 0 && !primaryRole.equals("") &&super.isValid()) {
+            yearsExperience = exp;
+            roles.add(primaryRole);
 
 
-        try{
-            skill = Skill.valueOf(skl);
-        } catch(Exception e) {
-            System.out.print(skl + " is not a valid skill");
+            try {
+                skill = Skill.valueOf(skl);
+            } catch (Exception e) {
+                System.out.print(skl + " is not a valid skill");
+                super.makeInvalid();
+            }
+            allGuitarists.addGuitarist(this);
         }
-        allGuitarists.addGuitarist(this);
+        else {super.makeInvalid();}
     }
 
     public void changeExperience(int newExp){
-        yearsExperience = newExp;
+        if (newExp < 0) System.out.println("Please enter a valid years of experience");
+        else yearsExperience = newExp;
     }
 
     public int getExperience(){return yearsExperience;}
@@ -78,7 +83,7 @@ class Guitarist extends Musician {
     public void removeInfluence(String artist){
         int index = 0;
         for(int i = 0; i < 5; i++){
-            if(influences.get(i) == artist){
+            if(influences.get(i).equals(artist)){
                 index = i;
                 influences.remove(index);
                 break;
@@ -181,7 +186,7 @@ class Guitarist extends Musician {
     }
 
     public static Guitarist getVoidGuitarist(){
-        return new Guitarist(0, "Beginner", "backup", "temp", 0, "N");
+        return new Guitarist(1, "Beginner", "backup", "temp", 1, "N");
     }
 
 }
