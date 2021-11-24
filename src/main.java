@@ -29,7 +29,7 @@ public class main {
         //allGuitarists.addGuitarist(Tony);
 
 
-        ZedLeppelin.findDrummer();
+        ZedLeppelin.findDrummer(0, Skill.Beginner);
         ZedLeppelin.findGuitarist(1, Skill.Professional);
 
         for(Musician musician : ZedLeppelin.getBandMembers()) {
