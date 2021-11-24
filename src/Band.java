@@ -7,24 +7,29 @@ public class Band {
     private HashMap<Genres, Integer> commonGenres = new HashMap<>(); //create hashmap matching genre to number of occurrences upon all members
     private Set<Musician> bandMembers = new HashSet<>();
     private String bandName;
-    int numMembers;
+    private int numMembers;
 
 
     //get name of band and a single musician type
-    public Band(String name, Drummer drummer, Bassist bassist, Guitarist guitarist){
+    public Band(String name, Drummer drummer, Bassist bassist, Guitarist guitarist, Singer singer){
         bandName = name;
-        numMembers = 1;
+        if (!name.equals("") && (drummer != null || bassist != null || guitarist != null || singer != null)) {
+            if (drummer != null) {
+                addDrummer(drummer);
+            }
 
-        if(drummer != null){
-            addDrummer(drummer);
-        }
+            if (bassist != null) {
+                addBassist(bassist);
 
-        if(bassist != null){
-            addBassist(bassist);
-        }
+            }
 
-        if(guitarist != null){
-            addGuitarist(guitarist);
+            if (guitarist != null) {
+                addGuitarist(guitarist);
+            }
+
+            if (singer != null) {
+                addSinger(singer);
+            }
         }
     }
 
@@ -78,6 +83,22 @@ public class Band {
         }
     }
 
+    public void addSinger(Singer s){
+        bandMembers.add(s);
+        numMembers++;
+
+        for(Genres genre : s.getGenres()){
+            if(commonGenres.containsKey(genre)){
+                int temp = commonGenres.get(genre);
+                temp++;
+                commonGenres.replace(genre, temp);
+            }
+            else{
+                commonGenres.put(genre, 1);
+            }
+        }
+    }
+
 
     public void findGuitarist(int exp, Skill skill){
         Guitarist potentialGuitarist = allGuitarists.findGuitarist(commonGenres, exp, skill);
@@ -117,5 +138,6 @@ public class Band {
         return bandMembers;
     }
 
+    public int getNumMembers(){return numMembers;}
 
 }

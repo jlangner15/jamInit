@@ -10,18 +10,21 @@ class Singer extends Musician {
     private Set<String> influences = new HashSet<>();
 
 
-    public Singer(int exp, String skl, String primaryRole, String name, int age, String gender){
+    public Singer(int exp, String skl, String primaryRole,String name, int age, String gender) {
         super(name, age, gender);
-        yearsExperience = exp;
-        roles.add(primaryRole);
+        if (exp >= 0 && !primaryRole.equals("") && super.isValid()) {
+            yearsExperience = exp;
+            roles.add(primaryRole);
 
-        try{
-            skill = Skill.valueOf(skl);
-        } catch(Exception e) {
-            System.out.print(skl + " is not a valid skill");
-        }
+            try {
+                skill = Skill.valueOf(skl);
+            } catch (Exception e) {
+                System.out.print(skl + " is not a valid skill");
+                super.makeInvalid();
+            }
 
-        allSingers.addSinger(this);
+            allSingers.addSinger(this);
+        } else super.makeInvalid();
     }
 
     public void changeExperience(int newExp){

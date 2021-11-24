@@ -16,16 +16,20 @@ class Bassist extends Musician {
 
     public Bassist(int exp, String skl, String primaryRole, String name, int age, String gender){
         super(name, age, gender);
-        yearsExperience = exp;
-        roles.add(primaryRole);
+        if (exp >= 0 && !primaryRole.equals("") && super.isValid()) {
 
-        try{
-            skill = Skill.valueOf(skl);
-        } catch(Exception e) {
-            System.out.print(skl + " is not a valid skill");
-        }
+            yearsExperience = exp;
+            roles.add(primaryRole);
 
-        allBassists.addBassist(this);
+            try {
+                skill = Skill.valueOf(skl);
+            } catch (Exception e) {
+                System.out.print(skl + " is not a valid skill");
+                super.makeInvalid();
+            }
+
+            allBassists.addBassist(this);
+        } else super.makeInvalid();
     }
 
     public void changeExperience(int newExp){
@@ -177,9 +181,6 @@ class Bassist extends Musician {
         System.out.print("\n");
     }
 
-    public void startBand(){
-        this.band = new Band("Zed Leppelin", null, this, null);
-    }
 
     public Band getBand(){
         return this.band;

@@ -1,7 +1,7 @@
 public class main {
 
     public static void main(String[] args){
-
+        /*
         Guitarist Jimmy = new Guitarist(1,"Professional", "lead", "Jimmy", 27, "M");
         Bassist Jeremy = new Bassist(1,"Intermediate", "bass", "Jeremy", 20, "M");
         Drummer John = new Drummer(15, "Professional", "drummer", "bonzo", 30, "M");
@@ -37,6 +37,8 @@ public class main {
         }
         //System.out.println(ZedLeppelin.getCommonGenres());
         //System.out.println(startBand.findGuitarist(ZedLeppelin.getCommonGenres()).getName());
+
+         */
 
 
     }
