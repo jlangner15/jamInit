@@ -14,9 +14,20 @@ public class testing {
         assertTrue(true);
     }
 
-    @BeforeEach
+    @Test
     void testAddMusicians(){
-        Musician freddy = new Musician("Freddy Mercury",)
+        Musician alice = new Musician("Alice Smith", 34, "F");
+        Musician bob = new Musician("Bob Shear", 20, "M");
+        Musician charlie = new Musician("Charlie", 25, "M");
+
+        assertTrue(alice.getName().equals("Alice Smith") && bob.getAge() == 20 && charlie.getGender().equals("M"));
     }
+
+    @Test
+    void addIllegalMusicians(){
+
+    }
+
+
 
 }
