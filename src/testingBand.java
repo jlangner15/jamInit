@@ -17,10 +17,23 @@ public class testingBand {
 
     @BeforeEach
     void setUp(){
-        Jimmy = new Guitarist(-1, "Professional", "lead", "ALi", 27, "M");
-        John = new Bassist(100, "Professional", "lead", "John Paul Jones", 25, "M");
-        Bonzo = new Drummer(5, "Professional", "John Bonham", 23, "M");
-        Robert = new Singer(10, "Professional", "lead", "ALi", 23, "M");
+        Jimmy = new Guitarist(15, "Professional", "lead", "Jimmy Page", 27, "M");
+        John = new Bassist(13, "Professional", "lead", "John Paul Jones", 25, "M");
+        Bonzo = new Drummer(15, "Professional", "John Bonham", 23, "M");
+        Robert = new Singer(10, "Professional", "lead", "Rober Plant", 23, "M");
+
+        Jimmy.addGenre("Rock");
+        Jimmy.addGenre("Blues");
+        Jimmy.addGenre("Folk");
+
+        John.addGenre("Rock");
+        John.addGenre("Blues");
+
+        Bonzo.addGenre("Rock");
+
+        Robert.addGenre("Rock");
+
+
 
     }
 
@@ -30,4 +43,34 @@ public class testingBand {
 
         assertEquals(LedZeppelin.getNumMembers(), 4);
     }
+
+    @Test
+    void testFindEachMember() {
+        Band milk = new Band("Milk", null, null, null, Robert);
+
+        milk.findGuitarist(5, Skill.Professional);
+        milk.findBassist(5, Skill.Professional);
+        milk.findDrummer(5, Skill.Professional);
+
+        System.out.println(milk.getNumMembers());
+
+        assertEquals(milk.getNumMembers(), 4);
+
+    }
+
+    @Test
+    void testFindIncompatibleMusician() {
+        Band psychy = new Band("Milk", Bonzo, John, null, Robert);
+
+        allGuitarists.removeGuitarist(Jimmy);
+
+        Guitarist Kevin = new Guitarist(5, "Professional", "lead", "Kevin Parker", 35, "M");
+         Kevin.addGenre("Alternative");
+
+        psychy.findGuitarist(5, Skill.Professional);
+
+        assertEquals(psychy.getNumMembers(), 3);
+
+    }
+
 }

@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class allGuitarists {
     public static Set<Guitarist> guitarists = new HashSet<>();
-    int numGuitarists = 0;
+    private int numGuitarists = 0;
 
     public static void removeGuitarist(Guitarist g){
         guitarists.remove(g);

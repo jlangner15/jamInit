@@ -11,7 +11,6 @@ public class Musician {
             gender = Gender;
             valid = true;
         }
-        else System.out.println("Please enter a valid musician");
     }
 
     public void changeName(String newName){
