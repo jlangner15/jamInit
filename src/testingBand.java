@@ -10,23 +10,23 @@ import org.junit.jupiter.api.Test;
 
 public class testingBand {
 
-    Guitarist Jimmy;
-    Bassist John;
-    Drummer Bonzo;
-    Singer Robert;
+    private Guitarist Jimmy;
+    private Bassist John;
+    private Drummer Bonzo;
+    private Singer Robert;
 
-    @BeforeAll
+    @BeforeEach
     void setUp(){
-        Guitarist Jimmy = new Guitarist(-1, "Professional", "lead", "ALi", 27, "M");
-        Bassist John = new Bassist(100, "Professional", "lead", "John Paul Jones", 25, "M");
-        Drummer Bonzo = new Drummer(5, "Professional", "John Bonham", 23, "M");
-        Singer Robert = new Singer(10, "Professional", "lead", "ALi", 23, "M");
+        Jimmy = new Guitarist(-1, "Professional", "lead", "ALi", 27, "M");
+        John = new Bassist(100, "Professional", "lead", "John Paul Jones", 25, "M");
+        Bonzo = new Drummer(5, "Professional", "John Bonham", 23, "M");
+        Robert = new Singer(10, "Professional", "lead", "ALi", 23, "M");
 
     }
 
     @Test
     void testMakeBand(){
-        Band LedZeppelin = new Band("Led Zeppelin",Bonzo, John, Jimmy, Robert);
+        Band LedZeppelin = new Band("Led Zeppelin", Bonzo, John, Jimmy, Robert);
 
         assertEquals(LedZeppelin.getNumMembers(), 4);
     }
